@@ -21,18 +21,28 @@
 .robots img{
     height: 150px;
     border-radius: 10px;
+
 }
 .robots{
-    max-width: 150px;
-    max-height: 150px;
+    max-width: 170px;
+    max-height: 170px;
     border-radius: 15px;
+    position: fixed;
 }
 .percy{
-   background-color : rgba(0,0,0,0.4);
+    background-color : rgba(0,0,0,0.4);
 }
+
+.robots h2{
+    text-align: center;
+    color : var(--white);
+}
+
+
 .ginny{
     background-color: rgba(77, 19, 209, 0.3);
 }
+
 
 .airport img{
     height: 150px;
@@ -48,6 +58,7 @@
 .festival{
     position: absolute;
     left: 20%;
+    top:18%;
 }
 .hiking{
     position: absolute;
