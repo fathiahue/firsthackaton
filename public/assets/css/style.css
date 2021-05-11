@@ -1,0 +1,73 @@
+:root{
+    --black: #000000ff;
+    --white: #ffffffff;
+    --cadmium-orange: #f19143ff;
+    --orange-crayola: #ff773dff;
+    --orange-soda: #f55536ff;
+}
+*{
+    margin: 0;
+    padding:0;
+}
+
+.main{
+    position: relative;
+    height: 100vh;
+    background-image: url("../../assets/images/mars-background.png");
+    background-repeat: no-repeat;
+    width: 100vw;
+    background-size: cover;
+}
+.robots img{
+    height: 150px;
+    border-radius: 10px;
+}
+.robots{
+    max-width: 150px;
+    max-height: 150px;
+    border-radius: 15px;
+}
+.percy{
+   background-color : rgba(0,0,0,0.4);
+}
+.ginny{
+    background-color: rgba(77, 19, 209, 0.3);
+}
+
+.airport img{
+    height: 150px;
+}
+.hiking img{
+    height: 200px;
+}
+.airport{
+    position: absolute;
+    right: 25%;
+    top:15%
+}
+.festival{
+    position: absolute;
+    left: 20%;
+}
+.hiking{
+    position: absolute;
+    left: 45%;
+    bottom: 15%;
+}
+.wrapper{
+    position: absolute;
+    top: 0;
+    text-align: center;
+    min-width: 350px;
+    min-height: 320px;
+    opacity: 0;
+    transition: .5s;
+    background: var(--cadmium-orange);
+    left: -40%;
+}
+.wrapper:hover{
+    opacity: 1;
+}
+.w-vaisseau{
+    left: -10%;
+}
