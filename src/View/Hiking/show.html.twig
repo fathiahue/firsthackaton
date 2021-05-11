@@ -3,7 +3,18 @@
 {% block content %}
     <h1>Carte de randonnées</h1>
     <img id="balise" class="hidden" src="/assets/images/balise.png">
+    <div>
+        {% for land in lands %}
+            <div class="land-card">
+                <h3>{{ land.name }}</h3>
+                <p>{{ land.description }}</p>
+                <img src="{{ land.url }}" />
+                <input type="checkbox" id="vehicle1" name="vehicle1" value="{{ land.X }}, {{ land.Y }}">
+            </div>
+        {% endfor %}
+    </div>
 
+    <input type="hidden" id="coordLands" value={{lands.coords}}>
     
     <div class="hikingCard">
         <canvas id ='marsCard' width="500" height="200" style = "background-image: url(/assets/images/mars-rando.png);">
@@ -11,15 +22,24 @@
         </canvas>
         <canvas id ='canevas3' width="500" height="200" ></canvas>
     </div>
+    <div>
+        {% if idPop != 0 %}
+            <p>DESCRIPTIF POINT D'INTERET</p>
+        {% endif %}
+        
+    </div>
     <a href="/home/index">Accueil</a>
 {% endblock %}
 
 {% block javascript %}
     <script>
+        const lands = document.getElementsByClassName("land-car");
+
         var c = document.getElementById("marsCard");
         var ctx = c.getContext("2d");
 
-        const tabBalise = [[230, 80], [180, 160], [120, 100], [70, 10], [100, 50], [190, 20]];
+        const tabBalise = document.getElementById("coordLands").value;
+        /*const tabBalise = [[230, 80], [180, 160], [120, 100], [70, 10], [100, 50], [190, 20]];*/
 
 
         window.onload = function() {
@@ -37,9 +57,12 @@
         Line(tabBalise[tabBalise.length-1], tabBalise[0])
 
         function Line(bal1, bal2) {
+            //ctx.fillStyle="#FF8030";
             ctx.beginPath();        
             ctx.moveTo(bal1[0]+10, bal1[1]+20);
             ctx.lineTo(bal2[0]+10, bal2[1]+20);
+            ctx.lineWidth = 3;
+            ctx.strokeStyle = '#331040';
             ctx.stroke();
         };
 
@@ -47,6 +70,17 @@
             var img1 = document.getElementById("balise");
             ctx.drawImage(img1, baliseCoord[0], baliseCoord[1], 20, 20);
         };
+
+        var coords = [];
+        var canvas = document.getElementById('canevas3');
+        var context = canvas.getContext("2d");
+        canvas.addEventListener('click', function (event) {
+            coords = [event.layerX, event.layerY];
+
+        /* coords layer = coords canvas * 3 */
+        document.location.href="/Hiking/landDisplay/"+coords[0]+"/"+coords[1];
+        });
+        
 
     </script>
 {% endblock %}
