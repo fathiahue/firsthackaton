@@ -1,0 +1,112 @@
+{% extends 'layout.html.twig' %}
+{% block content %}
+
+<style>
+    img {
+    width: 250px;
+    height: 250px;
+}
+
+h1{
+    text-align: center;
+    font-size: 250%;
+}
+.clignote {
+  color:green;
+  animation: clignote 2s linear infinite;
+}
+@keyframes clignote {  
+  50% { opacity: 0; }
+}
+.textemulticolore h2{
+background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);  
+-webkit-background-clip: text;
+-webkit-background-clip: text;
+-moz-background-clip: text; 
+background-clip: text;
+color: transparent;
+}
+
+.button2:hover
+{
+box-shadow:5px 8px #ccc;
+color:#c2989d;
+}
+
+
+</style>
+
+
+<div class="clignote">
+<h1> Welcome to the Festival 2021</h1></div><br><br><br>
+
+
+<div class ="textemulticolore">
+<h2>Festival Viking</h2>
+
+<img src="/assets/images/viking.jpg" alt="Viking Festival">
+
+<h4>Thursday 15th  May at sunday 19 th May</h4>
+
+
+
+<p>This festival which celebrates this period attracts tens of thousands of people and robots,
+ coming from all four corners of the galaxies, making it one of the biggest events in the universe.</p>
+
+
+ <button class="button2" type="button">Book</button> 
+ 
+ <h2>Festival Cooper's</h2>
+
+ <img src="/assets/images/images-3.jpg" alt="Bonfire Festival">
+
+ <h4>Wednesday 10th June at Saturday 23th June</h4>
+
+
+<p>Come to the race of the best spritters in the galaxy, whether you are robots, humans, or even Martians. 
+    You will also have fun seeing the runners fall spectacularly on uneven ground (even if the injuries are sometimes quite serious). 
+    Be many down the slopes of our beautiful planet Mars.</p>
+
+    <button class="button2" type="button">Book</button>
+<h2>Festival BonFire Night</h2>
+
+<img src="/assets/images/download.jpg" alt="Bonfire Festival">
+<h4>Saturday 06th July at Monday 09th July</h4>
+
+<p>This event is as user-friendly as can be, so you can expect to receive hugs and kisses from people you meet for the first time.
+     So if you are new and want to make friends this is the event for you.</p>
+
+
+     <button class="button2" type="button">Book</button>
+
+
+<h2>Lovebox Festival</h2>
+
+<img src="/assets/images/lovebox.jpg" alt="lovebox Festival">
+
+<h4>Friday 16th June at Sunday 19th June</h4>
+
+<p>this festival is always a great success with its wacky characters dressed in wacky costumes.
+     The Talents participating in the 2021 edition have not yet been confirmed but for allergy sufferers from the campsite, it's the festival or go.</p>
+
+     <button class="button2" type="button">Book</button>
+
+<h2>Isle of Wight Festival</h2>
+<img src="/assets/images/images-2.jpg" alt="Isle of Wight Festival">
+<h4>Saturday 17th July at 20th July </h4>
+
+<p>Rock in its purest form. The best rock singers straight from the planet Jupiter.
+    So come and shake the fleas in a frenzied rhythm.</p>
+<button class="button2" type="button">Book</button>
+
+<h2>Glastonbury Festival</h2>
+
+<img src="/assets/images/coopers.jpg" alt="Glastanbury Festival">
+
+<h4>Thursday 17th July at Monday 21th July</h4>
+
+<p>The Glastonbury Festival, officially called the Glastonbury Festival of Contemporary Performing Arts, is one of the largest music and performing arts festivals in the world.
+     The festival is widely known for its music, but it also features dance, comedy, theater, circus, cabaret, and other art forms.</p>
+     <button class="button2" type="button">Book</button>
+    </div>
+{% endblock %}
