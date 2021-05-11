@@ -9,7 +9,7 @@
                 <h3>{{ land.name }}</h3>
                 <p>{{ land.description }}</p>
                 <img src="{{ land.url }}" />
-                <input type="checkbox" id="vehicle1" name="vehicle1" value="{{ land.X }}, {{ land.Y }}">
+                <input class="land-coords hidden" type="checkbox" id="vehicle1" name="vehicle1" value="{{ land.X }}, {{ land.Y }}">
             </div>
         {% endfor %}
     </div>
@@ -33,7 +33,7 @@
 
 {% block javascript %}
     <script>
-        const lands = document.getElementsByClassName("land-car");
+        const lands = document.getElementsByClassName("land-coords");
 
         var c = document.getElementById("marsCard");
         var ctx = c.getContext("2d");
