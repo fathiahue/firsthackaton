@@ -1,5 +1,54 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-    <h1>Hello Wilder !</h1>
+
+    <div class="main">
+        <div class="robots percy">
+            <img src="/assets/images/robots/percy.png" alt="">
+        </div>
+        <div class="robots ginny">
+            <img src="/assets/images/robots/percy.png" alt="">
+        </div>
+
+        <!--Section 1 == Aeroport -->
+        <div class="airport">
+            <img src="assets/images/villes/vaisseau.png" alt="">
+            <div class="wrapper w-vaisseau">
+                <div class="local">
+                    <h2>Local</h2>
+                    <p>Lyon city...</p>
+                </div>
+                <div class="inter-planets">
+                    <h2>Inter-planets</h2>
+                    <p>Jupiter...</p>
+                </div>
+            </div>
+        </div>
+
+
+        <!--Section 2 == Ville festive -->
+        <div class="festival">
+            <img src="assets/images/villes/festival.png" alt="">
+            <div class="wrapper">
+                <iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23EF6C00&amp;ctz=Europe%2FParis&amp;src=YmFjaGlyLm5kaWF5ZS5wcm9AZ21haWwuY29t&amp;color=%23039BE5&amp;showTitle=0&amp;showNav=0&amp;showPrint=0&amp;showTabs=0&amp;showCalendars=0&amp;showTz=0&amp;showDate=0" style="border:solid 1px #777" width="350" height="350" frameborder="0" scrolling="no"></iframe>
+            </div>
+        </div>
+
+        <!--Section 3 == Randonnée -->
+        <div class="hiking">
+            <img src="assets/images/villes/hiking-bag.png" alt="">
+            <div class="wrapper">
+                <div class="local">
+                    <h2>Local</h2>
+                    <p>Lyon city...</p>
+                </div>
+                <div class="inter-planets">
+                    <h2>Inter-planets</h2>
+                    <p>Jupiter...</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
 {% endblock %}
