@@ -2,7 +2,6 @@
 
 {% block content %}
     <div class="main">
-
         <div class="robots percy">
             <h2>PERCY</h2>
             <img class="random-img" src="/assets/images/robots/percy.png" alt="">
@@ -16,7 +15,17 @@
         <div class="airport ">
             <img src="assets/images/villes/meteo.png" alt="">
             <div class="wrapper meteo">
-        //TODO...
+
+                {% for meteo in meteo.validity_checks.sols_checked %}
+                    <div class="box-weather">
+                        <h4>Sol {{ meteo }}</h4>
+                        <h5>Aug. 23</h5>
+                        <div class="line"></div>
+                        <h4>High : </h4>
+                        <h4>Low : </h4>
+                    </div>
+                {% endfor %}
+
             </div>
         </div>
 
@@ -32,17 +41,11 @@
         <!--Section 3 == Randonnée -->
         <div class="hiking">
             <img src="assets/images/villes/hiking-bag.png" alt="">
-            <div class="wrapper">
+            <div class="wrapper w-hiking">
                 <a href="/hiking/show/">A walk ?</a>
             </div>
         </div>
-        <div class="box-weather">
-            <h4>Sol 259</h4>
-            <h5>Aug. 23</h5>
-            <div class="line"></div>
-            <h4>High : </h4>
-            <h4>Low : </h4>
-        </div>
+
 
     </div>
 
