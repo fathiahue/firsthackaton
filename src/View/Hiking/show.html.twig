@@ -54,6 +54,11 @@
                 <img id="balise" src="/assets/images/balise.png">
             </div>
         </canvas>
+        <canvas id ='canevasRobot' width="500" height="200" >
+            <div>
+                <img id="percyImg" src="/assets/images/percy.png">
+            </div>
+        </canvas>
         <canvas id ='canevas3' width="500" height="200" ></canvas>
     </div>
     <div>
@@ -84,21 +89,25 @@
             coordsBalises[i][2] = parseInt(coordsBalises[i][2]);
         }
         
-        console.log(coordsBalises);
         
         // button circuit
         const dist = document.getElementById("distance");
         let distance = 0;
         const btn = document.getElementById("travel");
         btn.addEventListener("click", function() {
+
+            console.log(coordsBalises[0]);
+            console.log(coordsBalises);
             for (let i=0; i<coordsBalises.length-1; i++) {
-                setTimeout(() => {
-                    Line(coordsBalises[i], coordsBalises[i+1]);
                     distance += Math.sqrt(Math.pow((coordsBalises[i][0] - coordsBalises[i+1][0]), 2)
                         + Math.pow((coordsBalises[i][1] - coordsBalises[i+1][1]), 2));
-                }, 500*(i+1));
+                setTimeout(() => {
+                    Line(coordsBalises[i], coordsBalises[i+1]);
+            //robot(coordsBalises[i], 40);
+                }, 1000*(i+1));
         }
-        Line(coordsBalises[coordsBalises.length-1], coordsBalises[0])
+        Line(coordsBalises[coordsBalises.length-1], coordsBalises[0]);
+        
         distance += Math.sqrt(Math.pow((coordsBalises[coordsBalises.length-1][0] - coordsBalises[0][0]), 2)
                     + Math.pow((coordsBalises[coordsBalises.length-1][1] - coordsBalises[0][1]), 2));
         dist.innerHTML = "Le circuit fait " + Math.floor(distance) + " km.";
@@ -124,16 +133,19 @@
     
         function Line(bal1, bal2) {
             //ctx.fillStyle="#FF8030";
-            for (let j=0; j<10; j++)
+            for (let j=0; j<20; j++)
             setTimeout(() => {
                 ctx.beginPath();        
                 //ctx.moveTo(bal1[0]+10, bal1[1]+20);
                 //ctx.lineTo(bal2[0]+10, bal2[1]+20);
-                ctx.moveTo((bal1[0]+10)-(bal1[0]-bal2[0])*j/10, (bal1[1]+20)-(bal1[1]-bal2[1])*j/10);
-                ctx.lineTo((bal1[0]+10)-(bal1[0]-bal2[0])*(j+1)/10, (bal1[1]+20)-(bal1[1]-bal2[1])*(j+1)/10);
+                let posRobot = [(bal1[0]+10)-(bal1[0]-bal2[0])*j/20-40, (bal1[1]+20)-(bal1[1]-bal2[1])*j/20-30];
+                //console.log(posRobot);
+                ctx.moveTo((bal1[0]+10)-(bal1[0]-bal2[0])*j/20, (bal1[1]+20)-(bal1[1]-bal2[1])*j/20);
+                ctx.lineTo((bal1[0]+10)-(bal1[0]-bal2[0])*(j+1)/20, (bal1[1]+20)-(bal1[1]-bal2[1])*(j+1)/20);
                 ctx.lineWidth = 3;
                 ctx.strokeStyle = '#331040';
                 ctx.stroke();
+                robot(posRobot, 60);
             }, 50*(j+1));
         };
 
@@ -151,7 +163,16 @@
             document.location.href="/Hiking/landDisplay/"+coords[0]+"/"+coords[1];
             //var pixelData = context.getImageData(event.layerX, event.layerY, 1, 1).data;
             //console.log(pixelData);
-        });    
+        }); 
+
+        function robot(baliseCoord, size) {
+            console.log(baliseCoord);
+            var canesvasRobot = document.getElementById("canevasRobot");
+            var ctxRobot = canevasRobot.getContext("2d");
+            var img2 = document.getElementById("percyImg");
+            ctxRobot.clearRect(0, 0, 500, 200); // vider le canevas
+            ctxRobot.drawImage(img2, baliseCoord[0], baliseCoord[1], size, size);
+        };
 
 
     </script>
