@@ -47,35 +47,9 @@
            </form>
        </div>
 
-       <input type="hidden" id="idPop" value={{ idPop.id }}>
-       <input type="hidden" id="coordLands" value="{{ coordBalises }}">
-
-<<<<<<< HEAD
-       <div class="hikingCard">
-           <canvas id ='marsCard' width="500" height="200" style = "background-image: url(/assets/images/mars-rando.png);">
-               <div>
-                   <img id="balise" src="/assets/images/balise.png">
-               </div>
-           </canvas>
-           <canvas id ='canevas3' width="500" height="200" ></canvas>
-       </div>
-       <div class="point-interet">
-           {% if idPop['id'] != 0  and idPop['id'] in baliseId %}
-               <p>DESCRIPTIF POINT D'INTERET</p>
-               <h3>{{ idPop.name }}</h3>
-               <p>{{ idPop.description }}</p>
-               <img height="200px" width="200px" src="{{ idPop.url }}">
-           {% endif %}
-
-       </div>
-       <p id="distance"></p>
-       <button id="travel" type="button">Valider votre circuit</button>
-
-   </div>
-=======
     <input type="hidden" id="idPop" value={{ idPop.id }}>
     <input type="hidden" id="coordLands" value="{{ coordBalises }}">
-    
+
     <div class="hikingCard">
         <canvas id ='marsCard' width="500" height="200" style = "background-image: url(/assets/images/mars-rando.png);">
             <div>
@@ -94,14 +68,13 @@
             <p>DESCRIPTIF POINT D'INTERET</p>
             <h3>{{ idPop.name }}</h3>
             <p>{{ idPop.description }}</p>
-            <img height="200px" width="200px" src="{{ idPop.url }}"> 
+            <img height="200px" width="200px" src="{{ idPop.url }}">
         {% endif %}
-        
+
     </div>
     <p id="distance"></p>
     <button id="travel" type="button">Valider votre circuit</button>
-    <a href="/home/index">Accueil</a>
->>>>>>> origin/UShiking
+
 {% endblock %}
 
 {% block javascript %}

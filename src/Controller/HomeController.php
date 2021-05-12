@@ -27,8 +27,7 @@ class HomeController extends AbstractController
         $client = HttpClient::create();
         $response = $client->request(
             'GET',
-            'https://api.nasa.gov/insight_weather/?api_key=hySDNvBOvkz
-            JtcrJ1kPsrtRxx4TqtQAigNGSE8Jt&feedtype=json&ver=1.0'
+            'https://api.nasa.gov/insight_weather/?api_key=hySDNvBOvkzJtcrJ1kPsrtRxx4TqtQAigNGSE8Jt&feedtype=json&ver=1.0'
         );
 
         $statusCode = $response->getStatusCode();

@@ -205,6 +205,10 @@ canvas {
 .box-success{
     color: green;
 }
+
+#recaptcha-anchor-label::after {
+    content: 'But im a robot' !important;
+}
 .box-alert{
     color: red;
 }
