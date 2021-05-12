@@ -1,0 +1,154 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+
+   <div class="main-hiking">
+       <h1>Carte de randonnées</h1>
+       <div class="form-top">
+           <form method="POST" action="/Hiking/baliseDisplay">
+              <div class="select-area">
+                  {% if filter == 0 %}
+                      <input type="radio" onclick="submit()" name="filter" value="0" checked>
+                      <label class="filter-btn">Roue</label>
+                      <input type="radio" onclick="submit()" name="filter" value="1">
+                      <label class="filter-btn">Patte</label>
+                      <input type="radio" onclick="submit()" name="filter" value="2">
+                      <label class="filter-btn">Roue et Patte</label>
+                  {% elseif filter == 1 %}
+                      <input type="radio" onclick="submit()" name="filter" value="0">
+                      <label class="filter-btn">Roue</label>
+                      <input type="radio" onclick="submit()" name="filter" value="1" checked>
+                      <label class="filter-btn">Patte</label>
+                      <input type="radio" onclick="submit()" name="filter" value="2">
+                      <label class="filter-btn">Roue et Patte</label>
+                  {% else %}
+                      <input type="radio" onclick="submit()" name="filter" value="0">
+                      <label class="filter-btn">Roue</label>
+                      <input type="radio" onclick="submit()" name="filter" value="1">
+                      <label class="filter-btn">Patte</label>
+                      <input type="radio" onclick="submit()" name="filter" value="2" checked>
+                      <label class="filter-btn">Roue et Patte</label>
+                  {% endif %}
+
+              </div>
+               <div class="show-area">
+                   {% for land in lands %}
+                       <div class="landCard">
+                           <h3>{{ land.name }}</h3>
+                           {% if land.id in baliseId %}
+                               <input class="landChoose" onclick="submit()" type="checkbox" name="land{{ land.id }}" value="{{ land.id }}" checked>
+                           {% else %}
+                               <input class="landChoose" onclick="submit()" type="checkbox" name="land{{ land.id }}" value="{{ land.id }}">
+                           {% endif %}
+                           <!--<input type="hidden" class="landCoords" value="{{ land.coordinate_X }}, {{ land.coordinate_Y }}">-->
+                       </div>
+                   {% endfor %}
+               </div>
+           </form>
+       </div>
+
+       <input type="hidden" id="idPop" value={{ idPop.id }}>
+       <input type="hidden" id="coordLands" value="{{ coordBalises }}">
+
+       <div class="hikingCard">
+           <canvas id ='marsCard' width="500" height="200" style = "background-image: url(/assets/images/mars-rando.png);">
+               <div>
+                   <img id="balise" src="/assets/images/balise.png">
+               </div>
+           </canvas>
+           <canvas id ='canevas3' width="500" height="200" ></canvas>
+       </div>
+       <div class="point-interet">
+           {% if idPop['id'] != 0  and idPop['id'] in baliseId %}
+               <p>DESCRIPTIF POINT D'INTERET</p>
+               <h3>{{ idPop.name }}</h3>
+               <p>{{ idPop.description }}</p>
+               <img height="200px" width="200px" src="{{ idPop.url }}">
+           {% endif %}
+
+       </div>
+       <p id="distance"></p>
+       <button id="travel" type="button">Valider votre circuit</button>
+
+   </div>
+{% endblock %}
+
+{% block javascript %}
+    <script>
+        const idPop = document.getElementById("idPop").value;
+
+        // transform string coord in array
+        const tabBalise = document.getElementById("coordLands").value;
+        const coordsBalises = tabBalise.split(' ');
+        for (i=0; i<coordsBalises.length; i++) {
+            coordsBalises[i] = coordsBalises[i].split('-');
+            coordsBalises[i][0] = parseInt(coordsBalises[i][0]);
+            coordsBalises[i][1] = parseInt(coordsBalises[i][1]);
+            coordsBalises[i][2] = parseInt(coordsBalises[i][2]);
+        }
+        
+        console.log(coordsBalises);
+        
+        // button circuit
+        const dist = document.getElementById("distance");
+        let distance = 0;
+        const btn = document.getElementById("travel");
+        btn.addEventListener("click", function() {
+            for (i=0; i<coordsBalises.length-1; i++) {
+                Line(coordsBalises[i], coordsBalises[i+1]);
+                distance += Math.sqrt(Math.pow((coordsBalises[i][0] - coordsBalises[i+1][0]), 2)
+                    + Math.pow((coordsBalises[i][1] - coordsBalises[i+1][1]), 2));
+        }
+        Line(coordsBalises[coordsBalises.length-1], coordsBalises[0])
+        distance += Math.sqrt(Math.pow((coordsBalises[coordsBalises.length-1][0] - coordsBalises[0][0]), 2)
+                    + Math.pow((coordsBalises[coordsBalises.length-1][1] - coordsBalises[0][1]), 2));
+        dist.innerHTML = "Le circuit fait " + Math.floor(distance) + " km.";
+        });
+        
+
+        var c = document.getElementById("marsCard");
+        var ctx = c.getContext("2d");
+
+        window.onload = function() {
+            var d = document.getElementById("canevas3");
+            var ctx = d.getContext("2d");
+
+            for (i=0; i<coordsBalises.length; i++) {
+                if (coordsBalises[i][2] == idPop) {
+                    balise(coordsBalises[i], 30);
+                } else {
+                    balise(coordsBalises[i], 20);
+                }
+            }
+        };
+
+    
+        function Line(bal1, bal2) {
+            //ctx.fillStyle="#FF8030";
+            ctx.beginPath();        
+            ctx.moveTo(bal1[0]+10, bal1[1]+20);
+            ctx.lineTo(bal2[0]+10, bal2[1]+20);
+            ctx.lineWidth = 3;
+            ctx.strokeStyle = '#331040';
+            ctx.stroke();
+        };
+
+        function balise(baliseCoord, size) {
+            var img1 = document.getElementById("balise");
+            ctx.drawImage(img1, baliseCoord[0], baliseCoord[1], size, size);
+        };
+
+        var coords = [];
+        var canvas = document.getElementById('canevas3');
+        var context = canvas.getContext("2d");
+        canvas.addEventListener('click', function (event) {
+            coords = [event.layerX, event.layerY];
+            //coords layer = coords canvas * 3 
+            document.location.href="/Hiking/landDisplay/"+coords[0]+"/"+coords[1];
+            //var pixelData = context.getImageData(event.layerX, event.layerY, 1, 1).data;
+            //console.log(pixelData);
+        });    
+
+
+    </script>
+{% endblock %}
