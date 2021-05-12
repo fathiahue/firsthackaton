@@ -24,15 +24,15 @@ class HomeController extends AbstractController
     public function index()
     {
         $content = [];
-        $client = HttpClient::create();
-        $response = $client->request('GET', 'https://api.nasa.gov/insight_weather/?api_key=hySDNvBOvkzJtcrJ1kPsrtRxx4TqtQAigNGSE8Jt&feedtype=json&ver=1.0');
-
+        /*$client = HttpClient::create();
+        //$response = $client->request('GET', 'https://api.nasa.gov/insight_weather/?api_key=hySDNvBOvkzJtcrJ1kPsrtRxx4TqtQAigNGSE8Jt&feedtype=json&ver=1.0');
+        $response = '';
         $statusCode = $response->getStatusCode();
 
         if($statusCode === 200 ){
             $content = $response->getContent();
             $content = $response->toArray();
-        }
+        }*/
         return $this->twig->render('Home/index.html.twig',[
             'meteo' => $content
         ]);

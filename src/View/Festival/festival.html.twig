@@ -16,7 +16,6 @@
 
         <div class="clignote">
             <h1> Welcome to the Festival 2021</h1>
-            <a href="/">Home</a>
         </div>
 
 
@@ -53,7 +52,11 @@
         <h4>Saturday 06th July at Monday 09th July</h4>
         <p>This event is as user-friendly as can be, so you can expect to receive hugs and kisses from people you meet for the first time.
             So if you are new and want to make friends this is the event for you.</p>
-        <button class="button2" type="button">Book</button>
+        <form action="/festival/index" method="POST">
+            <div class="g-recaptcha" data-sitekey="6Ld5fNAaAAAAADEKNIvZrcwJw6FJuDkLFZFL4IWW"></div>
+            <br/>
+            <button class="button2" name="submit" type="submit">Book</button>
+        </form>
     </div>
 
     <div class="festoch" id="lovebox">
