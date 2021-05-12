@@ -91,10 +91,12 @@
         let distance = 0;
         const btn = document.getElementById("travel");
         btn.addEventListener("click", function() {
-            for (i=0; i<coordsBalises.length-1; i++) {
-                Line(coordsBalises[i], coordsBalises[i+1]);
-                distance += Math.sqrt(Math.pow((coordsBalises[i][0] - coordsBalises[i+1][0]), 2)
-                    + Math.pow((coordsBalises[i][1] - coordsBalises[i+1][1]), 2));
+            for (let i=0; i<coordsBalises.length-1; i++) {
+                setTimeout(() => {
+                    Line(coordsBalises[i], coordsBalises[i+1]);
+                    distance += Math.sqrt(Math.pow((coordsBalises[i][0] - coordsBalises[i+1][0]), 2)
+                        + Math.pow((coordsBalises[i][1] - coordsBalises[i+1][1]), 2));
+                }, 500*(i+1));
         }
         Line(coordsBalises[coordsBalises.length-1], coordsBalises[0])
         distance += Math.sqrt(Math.pow((coordsBalises[coordsBalises.length-1][0] - coordsBalises[0][0]), 2)
@@ -122,12 +124,17 @@
     
         function Line(bal1, bal2) {
             //ctx.fillStyle="#FF8030";
-            ctx.beginPath();        
-            ctx.moveTo(bal1[0]+10, bal1[1]+20);
-            ctx.lineTo(bal2[0]+10, bal2[1]+20);
-            ctx.lineWidth = 3;
-            ctx.strokeStyle = '#331040';
-            ctx.stroke();
+            for (let j=0; j<10; j++)
+            setTimeout(() => {
+                ctx.beginPath();        
+                //ctx.moveTo(bal1[0]+10, bal1[1]+20);
+                //ctx.lineTo(bal2[0]+10, bal2[1]+20);
+                ctx.moveTo((bal1[0]+10)-(bal1[0]-bal2[0])*j/10, (bal1[1]+20)-(bal1[1]-bal2[1])*j/10);
+                ctx.lineTo((bal1[0]+10)-(bal1[0]-bal2[0])*(j+1)/10, (bal1[1]+20)-(bal1[1]-bal2[1])*(j+1)/10);
+                ctx.lineWidth = 3;
+                ctx.strokeStyle = '#331040';
+                ctx.stroke();
+            }, 50*(j+1));
         };
 
         function balise(baliseCoord, size) {
