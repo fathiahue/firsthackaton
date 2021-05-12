@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+
 :root{
     --black: #000000ff;
     --white: #ffffffff;
@@ -8,6 +10,26 @@
 *{
     margin: 0;
     padding:0;
+    font-family: 'Roboto', sans-serif;
+}
+
+nav{
+    background-color: var(--black);
+    color : var(--cadmium-orange);
+    padding: 2rem 1rem;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+nav img{
+    height: 50px;
+    width: 50px;
+    margin:auto 0;
+}
+nav h1{
+    font-weight: bold;
+    font-size: xxx-large;
+    margin: 0 2rem;
 }
 
 .main{
@@ -29,9 +51,7 @@
     border-radius: 15px;
     position: fixed;
 }
-.percy{
-    background-color : rgba(0,0,0,0.4);
-}
+
 
 .robots h2{
     text-align: center;
@@ -39,20 +59,16 @@
 }
 
 
-.ginny{
-    background-color: rgba(77, 19, 209, 0.3);
-}
-
 
 .airport img{
-    height: 150px;
+    height: 300px;
 }
 .hiking img{
-    height: 200px;
+    height: 250px;
 }
 .airport{
     position: absolute;
-    right: 25%;
+    right: 15%;
     top:15%
 }
 .festival{
@@ -72,7 +88,7 @@
     min-width: 350px;
     min-height: 320px;
     opacity: 0;
-    transition: .5s;
+    transition: .8s;
     background: var(--cadmium-orange);
     left: -40%;
 }
@@ -80,5 +96,84 @@
     opacity: 1;
 }
 .w-vaisseau{
-    left: -10%;
+    right: -30%;
+    background-color: transparent;
+}
+
+.festoch{
+    text-align: center;
+    padding: 4rem 0;
+}
+.festoch p{
+    width: 500px;
+    margin:auto;
+    padding: 1rem;
+}
+
+
+.festoch img {
+    width: 500px;
+    height: 500px;
+}
+.festival img{
+    max-height: 400px;
+    max-width: 400px;
+}
+
+.clignote {
+    text-align: center;
+    color:green;
+    animation: clignote 2s linear infinite;
+}
+@keyframes clignote {
+    50% { opacity: 0; }
+}
+.textemulticolore .festoch h1{
+    background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
+    -webkit-background-clip: text;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    padding: 1rem;
+}
+
+.festoch .button2:hover
+{
+    box-shadow:5px 8px #ccc;
+    color:#c2989d;
+}
+.textemulticolore{
+    padding: 5rem 0;
+}
+.festoch h4{
+    padding: .8rem 0;
+}
+.w-vaisseau h1{
+    padding-bottom: 1rem;
+}
+
+.g-recaptcha{
+    display: flex;
+    justify-content: center;
+}
+.meteo{
+    left: -15%;
+}
+
+.box-weather{
+   text-align: center;
+    background-color: rgba(0, 0, 0, .2);
+    max-height: 200px;
+    max-width: max-content;
+    color: var(--white);
+    padding: 2rem;
+    border: 2px solid red;
+}
+
+.line{
+    width: 75px;
+    background-color: lightgrey;
+    height: 3px;
+    margin: .7rem 0;
 }
