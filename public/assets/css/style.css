@@ -124,7 +124,7 @@ nav h1{
 
 .clignote {
     text-align: center;
-    color:green;
+    color:red;
     animation: clignote 2s linear infinite;
 }
 @keyframes clignote {
@@ -234,7 +234,7 @@ nav a{
 .form-top{
     margin:2rem 0;
 }
-.point-interet{
+ .point-interet{
 
 }
 
