@@ -177,3 +177,22 @@ nav h1{
     height: 3px;
     margin: .7rem 0;
 }
+
+/* /////////////// hiking/show.html.twig ///////////// */
+
+canvas {
+    position: absolute;
+    width: 80%;
+    height: auto;
+    left: 10%;}
+
+/*div {position : absolute; width : 100%; left : 0px; top : 400px; }*/
+
+.hikingCard {
+    position:relative;
+}
+
+.hidden {
+    display: none;
+}
+
