@@ -92,6 +92,12 @@ nav h1{
     background: rgba(237,135,45,0.5);
     left: -40%;
 }
+.w-hiking a {
+     font-size: xxx-large;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
 .wrapper:hover{
     opacity: 1;
 }
@@ -171,6 +177,7 @@ nav h1{
     color: var(--white);
     padding: 2rem;
     border: 2px solid red;
+    display : inline-block;
 }
 
 .line{
@@ -189,9 +196,18 @@ canvas {
     left: 10%;}
 .box-success, .box-alert{
     text-align: center;
+    width: max-content;
+    margin: auto;
+    border : 2px solid;
+    padding: 1rem .5rem;
+    background-color: white;
 }
 .box-success{
     color: green;
+}
+
+#recaptcha-anchor-label::after {
+    content: 'But im a robot' !important;
 }
 .box-alert{
     color: red;
